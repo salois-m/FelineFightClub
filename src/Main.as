@@ -1,27 +1,23 @@
 package 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
+	import org.flixel.*;
+	
+	// initialize flash player
+	[SWF(width = "800", height = "600", backgroundColor = "0x000000")]
 	
 	/**
-	 * ...
-	 * @author Michael Salois
+	 * Feline Fight Club
+	 * @author KittenMittens
+	 * @version 1.0
+	 * 3/23/14
 	 */
-	public class Main extends Sprite 
+	public class Main extends FlxGame
 	{
-		
-		public function Main():void 
+		public function Main() 
 		{
-			if (stage) init();
-			else addEventListener(Event.ADDED_TO_STAGE, init);
+			// call super constructor
+			// launch playstate
+			super(800, 600, MenuState, 1);
 		}
-		
-		private function init(e:Event = null):void 
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			// entry point
-		}
-		
 	}
-	
 }
