@@ -1,29 +1,35 @@
 package  
 {
+	import mx.core.FlexSprite;
 	import org.flixel.*;
-	
+
 	/**
-	 * ...
-	 * @author Michael Salois
+	 * Player Class
+	 * @author Michael Salois & Jon Ferris
+	 * 4/6/14
 	 */
 	public class Player extends FlxSprite 
 	{
-		[Embed(source = "Cat2Use.png")]
-		private var PlayerImage:Class;
 		public var counter:Number = 0;
-		public var sP:Boolean = false;
+		public static var sP:Boolean = false;
 		
 		public function Player() 
 		{
-			super(FlxG.width*0.2, FlxG.height-300, PlayerImage);
-			
+			// load the image
+			super(FlxG.width * 0.1, FlxG.height - 250, this.isPlayer());
 		}
 		
+		// get chosen character
+		public function isPlayer():Class {return CharacterSelectState.playerChosen;}
+		// get chosen character's attack
+		public function getAttack():Class {return CharacterSelectState.playerAttack;}
+
 		override public function update():void
 		{
-			counter += FlxG.elapsed;
-				
-			if (sP==false) {
+			/*counter += FlxG.elapsed;
+			if (PlayState.collision == true) 
+				velocity.x = 0;
+			else if (sP==false) {
 				if (counter < 0.25)
 					velocity.x = 75;
 				else if (counter < 0.5)
@@ -31,15 +37,17 @@ package
 				else 
 					if(counter>0.5)
 					counter = 0;
-			}
-			
+			}*/
+
 			if (FlxG.keys.justPressed("SPACE"))
 			{
+				// attack when key is pressed
+				this.loadGraphic(this.getAttack(), false, false);
 				velocity.x = 400;
 				sP = true;
 			}
+
 			super.update();
 		}
 	}
-
 }
