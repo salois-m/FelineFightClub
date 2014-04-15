@@ -15,8 +15,10 @@ package
 		private var playButton:FlxButton;
 		private var quitButton:FlxButton;
 		
-[Embed(source = "../assets/11-bout-theme.mp3")]
-private var BackgroundSound:Class;
+		//[Embed(source="../assets/04.mp3")]
+		//[Embed(source="../02-overworld.mp3")]
+		[Embed(source="../assets/03-overworld-bgm.mp3")]
+		private var BackgroundSound:Class;
 
 		
 		// create a class for StartMenu.png
@@ -43,7 +45,6 @@ private var BackgroundSound:Class;
 		// change state of game
 		override public function create():void
 		{
-			
 			var sound:FlxSound = FlxG.play(BackgroundSound);
 
 			

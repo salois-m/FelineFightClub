@@ -11,7 +11,7 @@
 	public class PlayState extends FlxState 
 	{
 
-		[Embed(source = "../assets/CharacterSelect.mp3")]
+		[Embed(source = "../assets/11-bout-theme.mp3")]
 		private var BackgroundSound:Class;
 		
 		// create a class for Ring.png
@@ -26,7 +26,7 @@
 		// change state of game
 		override public function create():void
 		{
-						var sound:FlxSound = FlxG.play(BackgroundSound);
+			var sound:FlxSound = FlxG.play(BackgroundSound);
 			
 			// create flixel sprite for ring
 			var ring:FlxSprite = new FlxSprite(0, 0, Ring);

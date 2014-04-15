@@ -38,7 +38,7 @@ package
 			{
 				velocity.x = 0;
 				//colision noise
-				var sound:FlxSound = FlxG.play(BackgroundSound);
+				var sound:FlxSound = FlxG.play(BackgroundSound)
 				
 			}
 			else if (sP==false) {
