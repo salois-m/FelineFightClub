@@ -16,11 +16,11 @@ package
 		private var PlayerAttack:Class;
 		
 		public var counter:Number = 0;
-		public static var sP:Boolean = false;
+		public var sP:Boolean = false;
 
 		public function Npc() 
 		{
-			super(FlxG.width*0.6, FlxG.height-315, PlayerImage);
+			super(FlxG.width*0.9, FlxG.height-315, PlayerImage);
 		}
 		
 		/* Use enemyAttack.png for the update method (i.e. this.loadGraphic()
@@ -29,18 +29,17 @@ package
 		 * use 214 for width and 247 for height as the parameters.*/
 		override public function update():void
 		{
-			/*counter += FlxG.elapsed;
+			counter += FlxG.elapsed;
 			if (PlayState.collision == true) 
 				velocity.x = 0;
-			else if (sP==false) {
-				if (counter < 0.25)
-					velocity.x = 75;
-				else if (counter < 0.5)
-					velocity.x = -75;
-				else 
-					if(counter>0.5)
-					counter = 0;
-			}*/
+				
+			//character moves toward center of the ring for 2.5 seconds then stops
+			else if (sP == false) {
+				if (counter < 2.5) 
+					velocity.x=-75	
+				else
+					velocity.x = 0;
+			}
 
 			if (FlxG.keys.justPressed("SPACE"))
 			{

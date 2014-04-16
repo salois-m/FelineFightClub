@@ -16,12 +16,12 @@ package
 		private var BackgroundSound:Class;	
 		
 		public var counter:Number = 0;
-		public static var sP:Boolean = false;
+		public var sP:Boolean = false;
 		
 		public function Player() 
 		{
 			// load the image
-			super(FlxG.width * 0.1, FlxG.height - 250, this.isPlayer());
+			super(FlxG.width * -0.1, FlxG.height - 250, this.isPlayer());
 		}
 		
 		// get chosen character
@@ -41,14 +41,13 @@ package
 				var sound:FlxSound = FlxG.play(BackgroundSound)
 				
 			}
-			else if (sP==false) {
-				if (counter < 0.25)
-					velocity.x = 75;
-				else if (counter < 0.5)
-					velocity.x = -75;
-				else 
-					if(counter>0.5)
-					counter = 0;
+			
+			//character moves toward center of the ring for 2.5 seconds then stops
+			else if (sP == false) {
+				if (counter < 2.5) 
+					velocity.x=75	
+				else
+					velocity.x = 0;
 			}
 
 			if (FlxG.keys.justPressed("SPACE"))
