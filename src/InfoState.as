@@ -14,12 +14,9 @@ package
 		// back button
 		private var backButton:FlxButton;
 		
-<<<<<<< HEAD
 		[Embed(source = "../assets/04.mp3")]
 		private var BackgroundSound:Class;
 		
-=======
->>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 		// create a class for backbutton.png
 		[Embed(source = "../assets/backbutton.png")]
 		private var Back:Class;
@@ -30,12 +27,9 @@ package
 		
 		override public function create():void
 		{
-<<<<<<< HEAD
 
 			var sound:FlxSound = FlxG.play(BackgroundSound);
 			
-=======
->>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 			// create flixel sprite for info
 			var temp:FlxSprite = new FlxSprite(0, 0, Temp);
 			// display info in game

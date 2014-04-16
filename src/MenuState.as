@@ -15,15 +15,12 @@ package
 		private var playButton:FlxButton;
 		private var quitButton:FlxButton;
 		
-<<<<<<< HEAD
 		//[Embed(source="../assets/04.mp3")]
 		//[Embed(source="../02-overworld.mp3")]
 		[Embed(source="../assets/03-overworld-bgm.mp3")]
 		private var BackgroundSound:Class;
 
 		
-=======
->>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 		// create a class for StartMenu.png
 		[Embed(source = "../assets/StartMenu.png")]
 		private var Start:Class;
@@ -48,12 +45,9 @@ package
 		// change state of game
 		override public function create():void
 		{
-<<<<<<< HEAD
 			var sound:FlxSound = FlxG.play(BackgroundSound);
 
 			
-=======
->>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 			// create flixel sprite for ring
 			var start:FlxSprite = new FlxSprite(0, 0, Start);
 			// display ring in game

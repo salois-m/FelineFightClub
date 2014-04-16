@@ -16,19 +16,11 @@ package
 		private var PlayerAttack:Class;
 		
 		public var counter:Number = 0;
-<<<<<<< HEAD
 		public var sP:Boolean = false;
 
 		public function Npc() 
 		{
 			super(FlxG.width*0.9, FlxG.height-315, PlayerImage);
-=======
-		public static var sP:Boolean = false;
-
-		public function Npc() 
-		{
-			super(FlxG.width*0.6, FlxG.height-315, PlayerImage);
->>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 		}
 		
 		/* Use enemyAttack.png for the update method (i.e. this.loadGraphic()
@@ -37,7 +29,6 @@ package
 		 * use 214 for width and 247 for height as the parameters.*/
 		override public function update():void
 		{
-<<<<<<< HEAD
 			counter += FlxG.elapsed;
 			if (PlayState.collision == true) 
 				velocity.x = 0;
@@ -49,20 +40,6 @@ package
 				else
 					velocity.x = 0;
 			}
-=======
-			/*counter += FlxG.elapsed;
-			if (PlayState.collision == true) 
-				velocity.x = 0;
-			else if (sP==false) {
-				if (counter < 0.25)
-					velocity.x = 75;
-				else if (counter < 0.5)
-					velocity.x = -75;
-				else 
-					if(counter>0.5)
-					counter = 0;
-			}*/
->>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 
 			if (FlxG.keys.justPressed("SPACE"))
 			{
