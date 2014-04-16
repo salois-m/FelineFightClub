@@ -1,6 +1,9 @@
 package    
 {
+<<<<<<< HEAD
 	import flash.media.Sound;
+=======
+>>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 	import org.flixel.*;
 	/**
 	 * Character Selection Class
@@ -10,8 +13,13 @@ package
 	 */
 	public class CharacterSelectState extends FlxState
 	{	
+<<<<<<< HEAD
 		[Embed(source="../assets/CharacterSelect.mp3")]
 		private var BackgroundSound:Class;		
+=======
+		//[Embed(source = "../assets/CharacterSelect.wav")]
+		//private var BackgroundSound:Class;		
+>>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 		
 		// CharacterMenu
 		[Embed(source = "../assets/CharacterMenu.png")]
@@ -75,7 +83,11 @@ package
 		// change state of game
 		override public function create():void
 		{
+<<<<<<< HEAD
 			var sound:FlxSound = FlxG.play(BackgroundSound);
+=======
+			//var sound:FlxSound = FlxG.play(BackgroundSound);
+>>>>>>> ac372ecf20c541c78e632247da91e6f8cc2801be
 			
 			// create flixel sprite for CharacterMenu
 			var charMenu:FlxSprite = new FlxSprite(0, 0, Character);
