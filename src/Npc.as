@@ -20,7 +20,7 @@ package
 
 		public function Npc() 
 		{
-			super(FlxG.width*0.9, FlxG.height-315, PlayerImage);
+			super(FlxG.width*1, FlxG.height-315, PlayerImage);
 		}
 		
 		/* Use enemyAttack.png for the update method (i.e. this.loadGraphic()
@@ -45,7 +45,7 @@ package
 			{
 				// attack when key is pressed
 				this.loadGraphic(PlayerAttack, false, false);
-				velocity.x = -400;
+				velocity.x = -600;
 				sP = true;
 			}
 

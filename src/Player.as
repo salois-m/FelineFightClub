@@ -21,7 +21,7 @@ package
 		public function Player() 
 		{
 			// load the image
-			super(FlxG.width * -0.1, FlxG.height - 250, this.isPlayer());
+			super(FlxG.width * -0.2, FlxG.height - 250, this.isPlayer());
 		}
 		
 		// get chosen character
@@ -54,7 +54,7 @@ package
 			{
 				// attack when key is pressed
 				this.loadGraphic(this.getAttack(), false, false);
-				velocity.x = 400;
+				velocity.x = 600;
 				sP = true;
 			}
 
