@@ -37,29 +37,17 @@ package
 			
 			// add text for instructions page
 			var txt:FlxText
-			txt = new FlxText(-240,(FlxG.width / 2) - 400, FlxG.width,"How To Play")
-			txt.setFormat(null,40,0xB50014,"center")
+			txt = new FlxText(-200,(FlxG.width / 2) - 400, FlxG.width,"How To Play")
+			txt.setFormat(null,40, 0xFF4682B4, "center")
 			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -325, FlxG.width, "RULE NUMBER: 1")
-			txt.setFormat(null, 30, 0xB50014, "center");
+			txt = new FlxText(-200, (FlxG.width /2)  -300, FlxG.width, "Select Your Character")
+			txt.setFormat(null, 30, 0xFF4682B4, "center");
 			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -275, FlxG.width, "RULE NUMBER: 2")
-			txt.setFormat(null, 30, 0xB50014, "center");
+			txt = new FlxText(-200, (FlxG.width /2)  -130, FlxG.width, "Wait For The GO")
+			txt.setFormat(null, 30, 0xFF4682B4, "center");
 			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -225, FlxG.width, "RULE NUMBER: 3")
-			txt.setFormat(null, 30, 0xB50014, "center");
-			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -175, FlxG.width, "RULE NUMBER: 4")
-			txt.setFormat(null, 30, 0xB50014, "center")
-			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -125, FlxG.width, "RULE NUMBER: 5")
-			txt.setFormat(null, 30, 0xB50014, "center");
-			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -75, FlxG.width, "RULE NUMBER: 6")
-			txt.setFormat(null, 30, 0xB50014, "center");
-			this.add(txt);
-			txt = new FlxText(-240, (FlxG.width /2)  -25, FlxG.width, "RULE NUMBER: 7")
-			txt.setFormat(null, 30, 0xB50014, "center");
+			txt = new FlxText(-200, (FlxG.width /2)  -50, FlxG.width, "Press Space To Attack")
+			txt.setFormat(null, 30, 0xFF4682B4, "center");
 			this.add(txt);
 			
 			// allocate a back button object and call goBack on click			

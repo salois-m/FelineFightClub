@@ -16,7 +16,7 @@
     </define>
     <define append="true">
       <name>CONFIG::timeStamp</name>
-      <value>'4/22/2014'</value>
+      <value>'4/24/2014'</value>
     </define>
     <define append="true">
       <name>CONFIG::air</name>
@@ -32,13 +32,13 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\Michael\Desktop\FelineFightClub-master\FelineFightClub-master\src</path-element>
-      <path-element>C:\Program Files (x86)\FlashDevelop\flixel</path-element>
-      <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
+      <path-element>C:\users\markcamara\My Documents\Desktop\FelineFightClub\src</path-element>
+      <path-element>C:\users\markcamara\My Documents\Downloads\AdamAtomic-flixel-8989e50-2</path-element>
+      <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\Michael\Desktop\FelineFightClub-master\FelineFightClub-master\src\Main.as</path-element>
+    <path-element>C:\users\markcamara\My Documents\Desktop\FelineFightClub\src\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
