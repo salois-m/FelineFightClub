@@ -31,16 +31,16 @@ package
 
 			// add text for instructions page
 			var txt:FlxText
-			txt = new FlxText(-200,(FlxG.width / 2) - 400, FlxG.width,"How To Play")
+			txt = new FlxText(0,(FlxG.width / 2) - 400, FlxG.width,"How To Play")
 			txt.setFormat(null,40, 0xFF4682B4, "center")
 			this.add(txt);
-			txt = new FlxText(-200, (FlxG.width /2)  -300, FlxG.width, "Select Your Character")
+			txt = new FlxText(0, (FlxG.width /2)  -300, FlxG.width, "Select Your Character")
 			txt.setFormat(null, 30, 0xFF4682B4, "center");
 			this.add(txt);
-			txt = new FlxText(-200, (FlxG.width /2)  -130, FlxG.width, "Wait For The GO")
+			txt = new FlxText(0, (FlxG.width /2)  -130, FlxG.width, "Wait For The GO")
 			txt.setFormat(null, 30, 0xFF4682B4, "center");
 			this.add(txt);
-			txt = new FlxText(-200, (FlxG.width /2)  -50, FlxG.width, "Press Space To Attack")
+			txt = new FlxText(0, (FlxG.width /2)  -50, FlxG.width, "Press Space To Attack")
 			txt.setFormat(null, 30, 0xFF4682B4, "center");
 			this.add(txt);
 
