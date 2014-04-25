@@ -22,6 +22,7 @@ package
 		// create a class for Ring.png
 		[Embed(source = "../assets/PlayGround.png")]
 		private var Playground:Class;
+
 		
 		private var player:Player;
 		private var npc:Npc;
@@ -32,6 +33,9 @@ package
 		private var falseStart:FlxText;
 		private var getReady:FlxText;
 		private var npcReaction:Number = 0.8;
+		private var delaytime:Number;
+		private var delayset:Boolean = false;
+		
 		var prompt:FlxSprite = new FlxSprite(310, 50, Prompt);
 		var winPrompt:FlxSprite = new FlxSprite(310, 50, WinPrompt);
 		var losePrompt:FlxSprite = new FlxSprite(310, 50, LosePrompt);
@@ -53,8 +57,17 @@ package
 			npc = new Npc();
 			add(npc);
 			
+			//sets the delay time.
+			while(delayset == false) {
+				delaytime = Math.random() * 8;
+				if (delaytime > 2) {
+					delayset = true;
+				}
+			}
+			
 			//adds in Score Tracker
 			//scoreslist = new scoreTracker();
+			
 			
 			//texts that says to get ready
 			getReady = new FlxText(350, 300, 500, "GET READY!", false);	
@@ -72,15 +85,15 @@ package
 			falseStart.exists = false;
 		}
 
-		override public function update():void
+		override public function update(): void
 		{
-			if (counter > 2.5){
+			if (counter > delaytime){
 				getReady.exists = false;
 				add(prompt);
 			}
 			
 			//if player hits space too soon then automatically loses.
-			if (player.sP == true && (counter < 2.5)) {
+			if (player.sP == true && (counter < delaytime)) {
 				getReady.exists = false;
 				falseStart.exists = true;
 				newMenuTimer += FlxG.elapsed;
@@ -91,16 +104,15 @@ package
 			//timer then uses reactinTime instead of counter to display
 			//time.  only happens if player reacts in appropriate time window
 			//will need changing when code to determine winner is written
-			else if (player.sP == true && (counter >= 2.5)) {
-				timer.text = String(counter - 2.5).slice(0,4);
+			else if (player.sP == true && (counter >= delaytime)) {
+				timer.text = String(counter - delaytime).slice(0,4);
 				newMenuTimer += FlxG.elapsed;
 				timer.exists = true;
-				if((counter-2.5)<=npcReaction){
+				if((counter - delaytime)<=npcReaction){
 					add(winPrompt);
 					if (newMenuTimer > (counter + 3.5))
 						FlxG.switchState(new PlayState2);
-				}
-				else {	
+				} else {	
 					add(losePrompt);
 					if (newMenuTimer > (counter + 3.5))
 						FlxG.switchState(new EndState);					
@@ -115,7 +127,6 @@ package
 			
 			//If a collision(due to player pressing space) is detected then goes back to MenuState
 			collision = FlxG.collide(player, npc);
-			
 			super.update();
 		}
 	}
