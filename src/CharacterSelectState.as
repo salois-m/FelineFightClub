@@ -10,9 +10,6 @@ package
 	 */
 	public class CharacterSelectState extends FlxState
 	{	
-		[Embed(source="../assets/CharacterSelect.mp3")]
-		private var BackgroundSound:Class;		
-		
 		// CharacterMenu
 		[Embed(source = "../assets/CharacterMenu.png")]
 		private var Character:Class;
@@ -26,9 +23,9 @@ package
 		private var FastCube:Class;
 		[Embed(source = "../assets/FastCatChosen.png")]
 		private var FastChosen:Class;
-		[Embed(source = "../assets/Cat2Use.png")]
+		[Embed(source = "../assets/BaneCat.png")]
 		private var FastCat:Class;
-		[Embed(source = "../assets/Cat2UseAttack.png")]
+		[Embed(source = "../assets/BaneCatAttack.png")]
 		private var FastCatAttack:Class;
 		// 4Arms
 		[Embed(source = "../assets/4ArmsCube.png")]
@@ -75,8 +72,6 @@ package
 		// change state of game
 		override public function create():void
 		{
-			var sound:FlxSound = FlxG.play(BackgroundSound);
-			
 			// create flixel sprite for CharacterMenu
 			var charMenu:FlxSprite = new FlxSprite(0, 0, Character);
 			add(charMenu);

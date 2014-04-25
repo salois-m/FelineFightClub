@@ -16,7 +16,6 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\..\..\..\..\Program Files (x86)\FlashDevelop\flixel" />
   </classpaths>
   <!-- Build options -->
   <build>
@@ -67,12 +66,7 @@
   </intrinsics>
   <!-- Assets to embed into the output SWF -->
   <library>
-    <asset path="assets\CharacterSelect.mp3" update="..\..\Music\iTunes\iTunes Media\Music\Unknown Artist\Unknown Album\CharacterSelect.mp3" />
-    <asset path="assets\explosion.mp3" update="C:\users\markcamara\My Documents\Music\iTunes\iTunes Media\Music\Unknown Artist\Unknown Album\explosion.mp3" />
-    <asset path="assets\04.mp3" update="C:\users\markcamara\My Documents\Music\04.mp3" />
-    <asset path="assets\11-bout-theme.mp3" update="C:\users\markcamara\My Documents\Music\11-bout-theme.mp3" />
-    <asset path="assets\03-overworld-bgm.mp3" update="..\..\Music\03-overworld-bgm.mp3" />
-    <asset path="assets\Prompt.png" update="..\..\..\Documents\GitHub\FelineFightClub\assets\Prompt.png" />
+    <!-- example: <asset path="..." id="..." update="..." glyphs="..." mode="..." place="..." sharepoint="..." /> -->
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

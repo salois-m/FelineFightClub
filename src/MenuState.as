@@ -14,12 +14,11 @@ package
 		private var infoButton:FlxButton;
 		private var playButton:FlxButton;
 		private var quitButton:FlxButton;
+		static  var numOfPlays:int;
 		
-		//[Embed(source="../assets/04.mp3")]
-		//[Embed(source="../02-overworld.mp3")]
-		[Embed(source="../assets/03-overworld-bgm.mp3")]
+		// create a class for the background music
+		[Embed(source = "../assets/MainTheme.mp3")]
 		private var BackgroundSound:Class;
-
 		
 		// create a class for StartMenu.png
 		[Embed(source = "../assets/StartMenu.png")]
@@ -39,15 +38,24 @@ package
 		
 		public function MenuState() 
 		{
+			// use singleton pattern to allocate
+			// only one instance of sound
+			if (numOfPlays == 0) 
+			{
+				// variable for sound
+				var sound:FlxSound = new FlxSound();
+				sound.loadEmbedded(BackgroundSound, true, false);
+				sound.survive = false;
+				sound.volume = 5;
+				sound.play();
+			}
+			numOfPlays = 1;
 		}
 		
 		// override create function in super class
 		// change state of game
 		override public function create():void
-		{
-			var sound:FlxSound = FlxG.play(BackgroundSound);
-
-			
+		{			
 			// create flixel sprite for ring
 			var start:FlxSprite = new FlxSprite(0, 0, Start);
 			// display ring in game

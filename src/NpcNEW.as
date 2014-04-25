@@ -12,13 +12,13 @@ package
 		public var counter:Number = 0;
 		public static var sP:Boolean = false;
 
-		
+
 		public function Npc() 
 		{
 			// load the image
 			super(FlxG.width * 0.7, FlxG.height - 250, this.isPlayer());
 		}
-		
+
 		// get chosen character
 		public function isPlayer():Class {return CharacterSelectState.playerChosen;}
 		// get chosen character's attack

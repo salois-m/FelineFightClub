@@ -11,18 +11,18 @@ package
 	{
 		[Embed(source = "../assets/enemy.png")]
 		private var PlayerImage:Class;
-		
+
 		[Embed(source = "../assets/enemyAttack.png")]
 		private var PlayerAttack:Class;
-		
+
 		public var counter:Number = 0;
 		public var sP:Boolean = false;
 
 		public function Npc() 
 		{
-			super(FlxG.width*1, FlxG.height-315, PlayerImage);
+			super(FlxG.width*0.9, FlxG.height-315, PlayerImage);
 		}
-		
+
 		/* Use enemyAttack.png for the update method (i.e. this.loadGraphic()
 		 * after a certain time for the NPC to attack the player). In loadGraphic,
 		 * use 214 for width and 247 for height as the parameters.
@@ -32,7 +32,7 @@ package
 			counter += FlxG.elapsed;
 			if (PlayState.collision == true) 
 				velocity.x = 0;
-				
+
 			//character moves toward center of the ring for 2.5 seconds then stops
 			else if (sP == false) {
 				if (counter < 2.5) 
@@ -45,7 +45,7 @@ package
 			{
 				// attack when key is pressed
 				this.loadGraphic(PlayerAttack, false, false);
-				velocity.x = -600;
+				velocity.x = -400;
 				sP = true;
 			}
 

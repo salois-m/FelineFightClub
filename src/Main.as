@@ -12,7 +12,7 @@ package
 	 * 3/23/14
 	 */
 	public class Main extends FlxGame
-	{
+	{		
 		public function Main() 
 		{
 			// call super constructor
