@@ -47,15 +47,13 @@ package
 				//colision noise
 				var sound:FlxSound = FlxG.play(BackgroundSound);
 
-			}
-				if (PlayState3.collision == true) 
+			}if (PlayState3.collision == true) 
 			{
 				velocity.x = 0;
 				//colision noise
 				var sound:FlxSound = FlxG.play(BackgroundSound);
 
-			}
-			if (PlayState4.collision == true) 
+			}if (PlayState4.collision == true) 
 			{
 				velocity.x = 0;
 				//colision noise
@@ -69,6 +67,7 @@ package
 				var sound:FlxSound = FlxG.play(BackgroundSound);
 
 			}
+
 			//character moves toward center of the ring for 2.5 seconds then stops
 			else if (sP == false) {
 				if (counter < 2.5) 

@@ -18,15 +18,18 @@ package
 		private var WinPrompt:Class;
 		[Embed(source = "../assets/LosePrompt.png")]
 		private var LosePrompt:Class;
+		[Embed(source = "../assets/TooSoonWarning.png")]
+		private var TooSoonPrompt:Class;
 		
 		// create a class for Ring.png
 		[Embed(source = "../assets/PlayGround.png")]
 		private var Playground:Class;
-
 		
 		private var player:Player;
 		private var npc:Npc;
 		public static var collision:Boolean;
+		private var timeSaver:FlxSave;
+		private var actionSaver:FlxSave;
 		private var counter:Number = 0;
 		private var timer:FlxText;
 		private var newMenuTimer:Number = 0;
@@ -35,19 +38,27 @@ package
 		private var npcReaction:Number = 0.8;
 		private var delaytime:Number;
 		private var delayset:Boolean = false;
-		
+		private var userTime:Number;
 		var prompt:FlxSprite = new FlxSprite(310, 50, Prompt);
 		var winPrompt:FlxSprite = new FlxSprite(310, 50, WinPrompt);
 		var losePrompt:FlxSprite = new FlxSprite(310, 50, LosePrompt);
+		var toosoonPrompt:FlxSprite = new FlxSprite(310, 135, TooSoonPrompt);
 		
 		// override create function in super class
 		// change state of game
 		override public function create():void
 		{			
-			// create flixel sprite for ring
+			// create flixel sprite for playground
 			var playground:FlxSprite = new FlxSprite(0, 0, Playground);
-			// display ring in game
+			// display playground in game
 			add(playground);
+			
+			//prepare the FlxSaves
+			actionSaver = new FlxSave();
+			actionSaver.bind("Stage1Attacked");
+			
+			timeSaver = new FlxSave()
+			timeSaver.bind("Stage1Time");
 			
 			//adds in players character
 			player = new Player();
@@ -65,10 +76,6 @@ package
 				}
 			}
 			
-			//adds in Score Tracker
-			//scoreslist = new scoreTracker();
-			
-			
 			//texts that says to get ready
 			getReady = new FlxText(350, 300, 500, "GET READY!", false);	
 			add(getReady);
@@ -85,7 +92,7 @@ package
 			falseStart.exists = false;
 		}
 
-		override public function update(): void
+		override public function update():void
 		{
 			if (counter > delaytime){
 				getReady.exists = false;
@@ -96,6 +103,7 @@ package
 			if (player.sP == true && (counter < delaytime)) {
 				getReady.exists = false;
 				falseStart.exists = true;
+				add(toosoonPrompt);
 				newMenuTimer += FlxG.elapsed;
 				if (newMenuTimer > (counter + 2))
 					FlxG.switchState(new EndState);
@@ -105,17 +113,27 @@ package
 			//time.  only happens if player reacts in appropriate time window
 			//will need changing when code to determine winner is written
 			else if (player.sP == true && (counter >= delaytime)) {
-				timer.text = String(counter - delaytime).slice(0,4);
+				actionSaver.data.DidAttack = true; //save the fact that space was placed
+				userTime = (counter - delaytime);
+				timer.text = String(userTime).slice(0, 4);
+				timeSaver.data.Time = userTime; //save the reaction time
 				newMenuTimer += FlxG.elapsed;
 				timer.exists = true;
-				if((counter - delaytime)<=npcReaction){
+				if(userTime<=npcReaction){
 					add(winPrompt);
-					if (newMenuTimer > (counter + 3.5))
+					if (newMenuTimer > (counter + 3.5)) {
+						timeSaver.flush();
+						actionSaver.flush();
 						FlxG.switchState(new PlayState2);
-				} else {	
+					}
+				}
+				else {	
 					add(losePrompt);
-					if (newMenuTimer > (counter + 3.5))
-						FlxG.switchState(new EndState);					
+					if (newMenuTimer > (counter + 3.5)) {
+						timeSaver.flush();
+						actionSaver.flush();
+						FlxG.switchState(new EndState);		
+					}
 				}
 			}
 			//updates counter until space is pressed.
@@ -127,6 +145,7 @@ package
 			
 			//If a collision(due to player pressing space) is detected then goes back to MenuState
 			collision = FlxG.collide(player, npc);
+			
 			super.update();
 		}
 	}

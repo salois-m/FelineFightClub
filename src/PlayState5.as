@@ -18,6 +18,8 @@
 		private var WinPrompt:Class;
 		[Embed(source = "../assets/LosePrompt.png")]
 		private var LosePrompt:Class;
+		[Embed(source = "../assets/TooSoonWarning.png")]
+		private var TooSoonPrompt:Class;
 		
 		// create a class for Ring.png
 		[Embed(source = "../assets/Volcano.png")]
@@ -26,6 +28,8 @@
 		private var player:Player;
 		private var npc:Npc;
 		public static var collision:Boolean;
+		private var timeSaver:FlxSave;
+		private var actionSaver:FlxSave;
 		private var counter:Number = 0;
 		private var timer:FlxText;
 		private var newMenuTimer:Number = 0;
@@ -34,9 +38,11 @@
 		private var npcReaction:Number = .17;
 		private var delaytime:Number;
 		private var delayset:Boolean = false;
+		private var userTime:Number;
 		var prompt:FlxSprite = new FlxSprite(310, 50, Prompt);
 		var winPrompt:FlxSprite = new FlxSprite(310, 50, WinPrompt);
 		var losePrompt:FlxSprite = new FlxSprite(310, 50, LosePrompt);
+		var toosoonPrompt:FlxSprite = new FlxSprite(310, 135, TooSoonPrompt);
 
 		// override create function in super class
 		// change state of game
@@ -46,6 +52,13 @@
 			var ring:FlxSprite = new FlxSprite(0, 0, volcano);
 			// display ring in game
 			add(ring);
+			
+			//prepare the FlxSaves
+			actionSaver = new FlxSave();
+			actionSaver.bind("Stage4Attacked");
+			
+			timeSaver = new FlxSave()
+			timeSaver.bind("Stage4Time");
 			
 			//adds in players character
 			player = new Player();
@@ -90,6 +103,7 @@
 			if (player.sP == true && (counter < delaytime)) {
 				getReady.exists = false;
 				falseStart.exists = true;
+				add(toosoonPrompt);
 				newMenuTimer += FlxG.elapsed;
 				if (newMenuTimer > (counter + 2))
 					FlxG.switchState(new EndState);
@@ -99,18 +113,27 @@
 			//time.  only happens if player reacts in appropriate time window
 			//will need changing when code to determine winner is written
 			else if (player.sP == true && (counter >= delaytime)) {
-				timer.text = String(counter - delaytime).slice(0,4);
+				actionSaver.data.DidAttack = true; //save the fact that space was placed
+				userTime = (counter - delaytime);
+				timer.text = String(userTime).slice(0, 4);
+				timeSaver.data.Time = userTime; //save the reaction time
 				newMenuTimer += FlxG.elapsed;
 				timer.exists = true;
 				if((counter - delaytime)<=npcReaction){
 					add(winPrompt);
-					if (newMenuTimer > (counter + 3.5))
+					if (newMenuTimer > (counter + 3.5)) {
+						timeSaver.flush();
+						actionSaver.flush();
 						FlxG.switchState(new EndState);
+					}
 				}
 				else {	
 					add(losePrompt);
-					if (newMenuTimer > (counter + 3.5))
-						FlxG.switchState(new EndState);					
+					if (newMenuTimer > (counter + 3.5)){
+						timeSaver.flush();
+						actionSaver.flush();
+						FlxG.switchState(new EndState);	
+					}
 				}
 			}
 			//updates counter until space is pressed.

@@ -63,6 +63,18 @@ package
 		private var FourArmsButton:FlxButton;
 		private var HairBallButton:FlxButton;
 		private var KittyLitRButton:FlxButton;
+		// saves (get cleared)
+		// T = time, D = did win.
+		private var resetStage1T:FlxSave; 
+		private var resetStage2T:FlxSave;
+		private var resetStage3T:FlxSave; 
+		private var resetStage4T:FlxSave;
+		private var resetStage5T:FlxSave;
+		private var resetStage1D:FlxSave; 
+		private var resetStage2D:FlxSave;
+		private var resetStage3D:FlxSave; 
+		private var resetStage4D:FlxSave;
+		private var resetStage5D:FlxSave;
 		// chosen character for player
 		public static var playerChosen:Class;
 		// chosen character's attack
@@ -75,6 +87,8 @@ package
 			// create flixel sprite for CharacterMenu
 			var charMenu:FlxSprite = new FlxSprite(0, 0, Character);
 			add(charMenu);
+			
+			this.clearSaves();
 			
 			// allocate a back button object and call goBack on click			
 			backButton = new FlxButton(30, 530, null, goBack);
@@ -111,6 +125,62 @@ package
 		
 		// switch state when called
 		private function toNext():void {FlxG.mouse.hide();FlxG.switchState(new PlayState);}
+		
+		//Character Select screen resets all of the last sessions' scores
+		//here in case the game was last closed in the middle of a session.
+		//flushing conforms the save.
+		private function clearSaves():void {
+			
+			resetStage1T = new FlxSave();
+			resetStage1T.bind("Stage1Time");
+			resetStage1T.data.Time = 0.00;
+			resetStage1T.flush();
+			
+			resetStage1D = new FlxSave();
+			resetStage1D.bind("Stage1Attacked");
+			resetStage1D.data.DidAttack = false;
+			resetStage1D.flush();
+			
+			resetStage2T = new FlxSave();
+			resetStage2T.bind("Stage2Time");
+			resetStage2T.data.Time = 0.00;
+			resetStage2T.flush();
+			
+			resetStage2D = new FlxSave();
+			resetStage2D.bind("Stage2Attacked");
+			resetStage2D.data.DidAttack = false;
+			resetStage2D.flush();
+			
+			resetStage3T = new FlxSave();
+			resetStage3T.bind("Stage3Time");
+			resetStage3T.data.Time = 0.00;
+			resetStage3T.flush();
+			
+			resetStage3D = new FlxSave();
+			resetStage3D.bind("Stage3Attacked");
+			resetStage3D.data.DidAttack = false;
+			resetStage3D.flush();
+			
+			resetStage4T = new FlxSave();
+			resetStage4T.bind("Stage4Time");
+			resetStage4T.data.Time = 0.00;
+			resetStage4T.flush();
+			
+			resetStage4D = new FlxSave();
+			resetStage4D.bind("Stage4Attacked");
+			resetStage4D.data.DidAttack = false;
+			resetStage1D.flush();
+			
+			resetStage5T = new FlxSave();
+			resetStage5T.bind("Stage5Time");
+			resetStage5T.data.Time = 0.00;
+			resetStage5T.flush();
+			
+			resetStage5D = new FlxSave();
+			resetStage5D.bind("Stage5Attacked");
+			resetStage5D.data.DidAttack = false;
+			resetStage5D.flush();
+		}
 		
 		// player has chosen FastCat
 		public function getFastCat():void
